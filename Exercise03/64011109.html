@@ -6,6 +6,14 @@
     <title>BrapStoot demo</title>
     <link rel = "icon" href = "https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" type = "image/x-icon">
     <style>
+      body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            overflow-y: scroll; 
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
       .test{
         background-color: #2B3035;
         height: 100%;
@@ -19,6 +27,15 @@
       }
       .icon{
         width: 50px;
+      }
+      .test2{
+        width: 1100px;
+      }
+      .homefont{
+        font-size: 1.3vw;
+      }
+      .aboutfont{
+        font-size: 1.1vw;
       }
 
     </style>
@@ -54,10 +71,12 @@
         <div class="container">
           <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
             <div class=" px-0 d-flex">
-              <img src="https://avatars.githubusercontent.com/u/88590988?s=400&u=a2d609d9d2624516a16ee1fcaf834e097ddf9b23&v=4" class="rounded-circle me-lg-5">
+              <div class="justify-content-center align-items-center test2">
+                <img src="https://avatars.githubusercontent.com/u/88590988?s=400&u=a2d609d9d2624516a16ee1fcaf834e097ddf9b23&v=4" class="rounded-circle me-5 w-75">
+              </div>
               <div>
                 <h1 class="display-4 fst-italic">XXXXXXXXX XXXXXX</h1>
-                <p class="lead my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore possimus eaque commodi consectetur doloribus recusandae sapiente debitis id nulla. Impedit optio suscipit laudantium labore, ea possimus nam quos aliquid dolorum?</p>
+                <p class=" my-3 homefont">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore possimus eaque commodi consectetur doloribus recusandae sapiente debitis id nulla. Impedit optio suscipit laudantium labore, ea possimus nam quos aliquid dolorum?</p>
                 <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 75%"></div>
                 </div>
@@ -65,8 +84,8 @@
             </div>
           </div>
           
-          <h1 class="text-white mb-3" id="New">New</h1>
-          <div class="d-flex justify-content-between px-5 my-3">
+          <h1 class="text-white mb-3 text-sm-center" id="New">New</h1>
+          <div class="d-lg-flex justify-content-lg-between px-5 my-3 d-sm-grid gap-sm-4 justify-content-sm-center">
               <div class=" rounded-5 text-bg-dark content p-4">
                 <div class=" text-center">
                   <h3>content</h3>
@@ -87,22 +106,22 @@
               </div>
           </div>
 
-          <h1 class="text-white my-3" id="about">about</h1>
+          <h1 class="text-white my-3 text-sm-center" id="about">about</h1>
           <div class="px-5 py-4 d-flex rounded-4 text-bg-dark about gap-5 align-items-center my-3">
-            <img class="imgcon rounded-5" src="https://gamerbraves.sgp1.cdn.digitaloceanspaces.com/2022/05/Spy-x-Family-Anya-Forger-2.png" alt="">
-            <div class="">
+            <img class="imgcon rounded-5 img-fluid" src="https://gamerbraves.sgp1.cdn.digitaloceanspaces.com/2022/05/Spy-x-Family-Anya-Forger-2.png" alt="">
+            <div class="aboutfont">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum laborum repellat aliquid error quaerat tenetur officia iure magnam dolorum. Repellat distinctio ullam tempore voluptates omnis mollitia fugiat commodi obcaecati, enim labore id facilis quos eveniet totam, harum animi libero ad asperiores perferendis. Quos error exercitationem, dicta voluptatum expedita impedit voluptate fugiat a omnis aliquam deleniti dolores adipisci labore voluptatem harum dolor quasi, atque unde minima quo? Necessitatibus debitis eaque consequuntur.</p>
             </div>
           </div>
 
           <div class="px-5 py-4 d-flex rounded-4 text-bg-dark about gap-5 align-items-center">
-            <div class="">
+            <div class="aboutfont">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum laborum repellat aliquid error quaerat tenetur officia iure magnam dolorum. Repellat distinctio ullam tempore voluptates omnis mollitia fugiat commodi obcaecati, enim labore id facilis quos eveniet totam, harum animi libero ad asperiores perferendis. Quos error exercitationem, dicta voluptatum expedita impedit voluptate fugiat a omnis aliquam deleniti dolores adipisci labore voluptatem harum dolor quasi, atque unde minima quo? Necessitatibus debitis eaque consequuntur.</p>
             </div>
-            <img class="imgcon rounded-5" src="https://cdn.realsport101.com/images/ncavvykf/epicstream/4496c3fab7ca90b76d0069f0d671f2cad7dbe565-1920x1080.jpg?rect=0,0,1919,1080&w=686&h=386&auto=format" alt="">
+            <img class="img-fluid imgcon rounded-5 " src="https://cdn.realsport101.com/images/ncavvykf/epicstream/4496c3fab7ca90b76d0069f0d671f2cad7dbe565-1920x1080.jpg?rect=0,0,1919,1080&w=686&h=386&auto=format" alt="">
           </div>
 
-          <h1 class=" text-white my-3" id="Contact">Contact</h1>
+          <h1 class=" text-white my-3 text-sm-center" id="Contact">Contact</h1>
           <div class=" text-bg-dark px-5 py-4 d-grid gap-4 rounded-4">
             <div class="d-flex align-items-center gap-4">
               <a href="https://github.com/Sobitora" target="_blank">
