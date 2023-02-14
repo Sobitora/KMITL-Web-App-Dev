@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div id="maincontainer"></div>
+        <script>
+            const container = document.getElementById("maincontainer")
+
+            const head = document.createElement("h1")
+            head.innerHTML = 'Exercise 04: JavaScript&DOM'
+            container.appendChild(head)
+
+            const btn = document.createElement("button")
+            btn.innerHTML = 'Click me on display Date and Time'
+            container.appendChild(btn)
+
+            const Info = document.createElement("p")
+            const infolink = document.createElement("a")
+            infolink.innerHTML = "Personal Info"
+            infolink.href =""
+            Info.appendChild(infolink)
+            // infolink.style ="color:pink"
+            Info.onclick = () =>{
+                let x = document.getElementById("info")
+                if(x.style.display === "none"){
+                    x.style.display ="block"
+                }
+                else{
+                    x.style.display = "none"
+                }
+            }
+            Info.onmouseover = () =>{
+                infolink.style = "background-color:yellow"
+            }
+            Info.onmouseout = () =>{
+                infolink.style = "background-color:white" + "color:pink"
+            }
+            container.appendChild(Info)
+
+            const listinfo = document.createElement("ul")
+            listinfo.id = "info"
+            listinfo.style.display = "none"
+            const datainfo = ["Nutchapon Tripat, ID:64011109","Subject: WebDev","Semester"]
+            for (let index = 0; index < datainfo.length; index++) {
+                const lidata = document.createElement("li")
+                lidata.innerHTML = datainfo[index]
+                listinfo.appendChild(lidata)
+                container.appendChild(listinfo)
+            }
+
+            const Snap = document.createElement("h1")
+            Snap.innerHTML = "SnapShots"
+            container.appendChild(Snap)
+
+            const list = document.createElement("ul")
+            const snaplist = ["Firework","Crest","Action","Beffalo"]
+            for (let index = 0; index < 4; index++) {
+                const lisnap = document.createElement("li")
+                const textsnap = document.createElement("a")
+                textsnap.innerHTML = snaplist[index]
+                textsnap.href = ""
+                lisnap.appendChild(textsnap)
+                list.appendChild(lisnap)
+                container.appendChild(list)
+            }
+
+            const imgblock = document.createElement("img")
+            imgblock.src = "https://02dual.com/wp-content/uploads/2019/04/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B9%80%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%97%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B1%E0%B8%87.png"
+            container.appendChild(imgblock)
+
+            function showinfo(){
+                var x = document.getElementById()
+            }
+            
+        </script>
+    </body>
+</html>
