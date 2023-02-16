@@ -6,7 +6,7 @@
         <script>
             const container = document.getElementById("maincontainer");
 
-            const head = document.createElement("h1");
+            const head = document.createElement("h2");
             head.innerHTML = "Exercise 04: JavaScript&DOM";
             container.appendChild(head);
 
@@ -63,7 +63,7 @@
             infolink.innerHTML = "Personal Info";
             infolink.href = "#";
             Info.appendChild(infolink);
-            infolink.style = "color:pink";
+            infolink.style = "color:#DEA0DA";
             Info.onclick = () => {
                 let x = document.getElementById("info");
                 if (x.style.display === "none") {
@@ -76,7 +76,7 @@
                 infolink.style = "background-color:yellow";
             };
             infolink.onmouseout = () => {
-                infolink.style = "background-color:white;" + "color:pink";
+                infolink.style = "background-color:white;" + "color:#DEA0DA";
             };
             container.appendChild(Info);
 
@@ -84,8 +84,8 @@
             listinfo.id = "info";
             listinfo.style.display = "none";
             const datainfo = [
-                "Nutchapon Tripat, ID:64011109",
-                "Subject: Web",
+                "Nutchapon Tripat, ID: 64011109",
+                "Subject: WEB APPLICATION DEVELOPMENT",
                 "Semester: 2/2565"
             ];
             for (let index = 0; index < datainfo.length; index++) {
