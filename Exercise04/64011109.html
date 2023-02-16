@@ -4,74 +4,126 @@
     <body>
         <div id="maincontainer"></div>
         <script>
-            const container = document.getElementById("maincontainer")
+            const container = document.getElementById("maincontainer");
 
-            const head = document.createElement("h1")
-            head.innerHTML = 'Exercise 04: JavaScript&DOM'
-            container.appendChild(head)
+            const head = document.createElement("h1");
+            head.innerHTML = "Exercise 04: JavaScript&DOM";
+            container.appendChild(head);
 
-            const btn = document.createElement("button")
-            btn.innerHTML = 'Click me on display Date and Time'
-            container.appendChild(btn)
+            const btnshowdate = document.createElement("button");
+            btnshowdate.innerHTML = "Click me on display Date and Time";
+            btnshowdate.onclick = () => {
+                starttime();
+                btnshowdate.hidden = true
+                showdate.hidden = false
+            };
+            container.appendChild(btnshowdate);
 
-            const Info = document.createElement("p")
-            const infolink = document.createElement("a")
-            infolink.innerHTML = "Personal Info"
-            infolink.href =""
-            Info.appendChild(infolink)
-            // infolink.style ="color:pink"
-            Info.onclick = () =>{
-                let x = document.getElementById("info")
-                if(x.style.display === "none"){
-                    x.style.display ="block"
+            const showdate = document.createElement("button");
+            showdate.innerHTML = new Date();
+            showdate.hidden = true
+            let counttime = true;
+            showdate.onclick = () => {
+                counttime = !counttime;
+                if (counttime) {
+                starttime();
+                } else {
+                stoptime();
                 }
-                else{
-                    x.style.display = "none"
-                }
-            }
-            Info.onmouseover = () =>{
-                infolink.style = "background-color:yellow"
-            }
-            Info.onmouseout = () =>{
-                infolink.style = "background-color:white" + "color:pink"
-            }
-            container.appendChild(Info)
+            };
+            container.appendChild(showdate);
 
-            const listinfo = document.createElement("ul")
-            listinfo.id = "info"
-            listinfo.style.display = "none"
-            const datainfo = ["Nutchapon Tripat, ID:64011109","Subject: WebDev","Semester"]
+            let w;
+            function starttime() {
+                w = new Worker("Worker.js");
+                w.onmessage = (e) => {
+                showdate.innerHTML = e.data;
+                changecolor();
+                };
+                showdate.style.position = "absolute";
+                showdate.style.right = "0px";
+                showdate.style.top = "0px";
+                Info.style = "margin-top:59px;";
+            }
+            function stoptime() {
+                w.terminate();
+                showdate.style.position = "";
+                Info.style = "margin-top:16px;";
+            }
+            const colordate = ["red", "orange", "purple", "pink", "blue", "yellow"];
+            let countcolor = 0;
+            function changecolor() {
+                showdate.style.backgroundColor = colordate[countcolor % 6];
+                showdate.style.color = colordate[5 - (countcolor % 6)];
+                countcolor++;
+            }
+
+            const Info = document.createElement("p");
+            const infolink = document.createElement("a");
+            infolink.innerHTML = "Personal Info";
+            infolink.href = "#";
+            Info.appendChild(infolink);
+            infolink.style = "color:pink";
+            Info.onclick = () => {
+                let x = document.getElementById("info");
+                if (x.style.display === "none") {
+                x.style.display = "block";
+                } else {
+                x.style.display = "none";
+                }
+            };
+            infolink.onmouseover = () => {
+                infolink.style = "background-color:yellow";
+            };
+            infolink.onmouseout = () => {
+                infolink.style = "background-color:white;" + "color:pink";
+            };
+            container.appendChild(Info);
+
+            const listinfo = document.createElement("ul");
+            listinfo.id = "info";
+            listinfo.style.display = "none";
+            const datainfo = [
+                "Nutchapon Tripat, ID:64011109",
+                "Subject: Web",
+                "Semester: 2/2565"
+            ];
             for (let index = 0; index < datainfo.length; index++) {
-                const lidata = document.createElement("li")
-                lidata.innerHTML = datainfo[index]
-                listinfo.appendChild(lidata)
-                container.appendChild(listinfo)
+                const lidata = document.createElement("li");
+                lidata.innerHTML = datainfo[index];
+                listinfo.appendChild(lidata);
             }
+            container.appendChild(listinfo);
 
-            const Snap = document.createElement("h1")
-            Snap.innerHTML = "SnapShots"
-            container.appendChild(Snap)
+            const Snap = document.createElement("h1");
+            Snap.innerHTML = "SnapShots";
+            container.appendChild(Snap);
 
-            const list = document.createElement("ul")
-            const snaplist = ["Firework","Crest","Action","Beffalo"]
-            for (let index = 0; index < 4; index++) {
-                const lisnap = document.createElement("li")
-                const textsnap = document.createElement("a")
-                textsnap.innerHTML = snaplist[index]
-                textsnap.href = ""
-                lisnap.appendChild(textsnap)
-                list.appendChild(lisnap)
-                container.appendChild(list)
-            }
+            const list = document.createElement("ul");
+            const snaplist = [
+                ["Firework", "https://ichef.bbci.co.uk/images/ic/480xn/p05lqc4f.jpg"],
+                ["Crest","https://m.media-amazon.com/images/I/713XPo-M9sL._SX466_.jpg"],
+                ["Action","https://satishrao.in/wp-content/uploads/2014/11/action.jpg"],
+                ["Buffalo","https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/African_buffalo_%28Syncerus_caffer_caffer%29_male_with_cattle_egret.jpg/1200px-African_buffalo_%28Syncerus_caffer_caffer%29_male_with_cattle_egret.jpg"],
+            ];
+            snaplist.forEach((x) => {
+                const lisnap = document.createElement("li");
+                const textsnap = document.createElement("a");
+                textsnap.innerHTML = x[0];
+                textsnap.href = "#";
+                textsnap.style.color = "blue"
+                textsnap.onclick = () => {
+                    imgblock.src = x[1];
+                };
+                lisnap.appendChild(textsnap);
+                list.appendChild(lisnap);
+            });
+            container.appendChild(list);
 
-            const imgblock = document.createElement("img")
-            imgblock.src = "https://02dual.com/wp-content/uploads/2019/04/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B9%80%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%97%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B1%E0%B8%87.png"
-            container.appendChild(imgblock)
+            const imgblock = document.createElement("img");
+            imgblock.src = "https://02dual.com/wp-content/uploads/2019/04/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B9%80%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%97%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B1%E0%B8%87.png";
+            container.appendChild(imgblock);
 
-            function showinfo(){
-                var x = document.getElementById()
-            }
-            
         </script>
     </body>
 </html>
