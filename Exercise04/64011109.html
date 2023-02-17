@@ -35,15 +35,15 @@
 
             let w;
             function starttime() {
+                showdate.style.position = "fixed";
+                showdate.style.right = "0px";
+                showdate.style.top = "0px";
+                Info.style = "margin-top:59px;";
                 w = new Worker("Worker.js");
                 w.onmessage = (e) => {
                 showdate.innerHTML = e.data;
                 changecolor();
                 };
-                showdate.style.position = "absolute";
-                showdate.style.right = "0px";
-                showdate.style.top = "0px";
-                Info.style = "margin-top:59px;";
             }
             function stoptime() {
                 w.terminate();
