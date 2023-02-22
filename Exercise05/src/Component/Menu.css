@@ -1,0 +1,32 @@
+.Box-container{
+    width: 700px;
+    background-color: #FCECD6;
+    border-radius: 15px;
+    border: solid 2px;
+    padding: 20px;
+}
+.food-container{
+    display: flex;
+}
+.food-container img{
+    width: 200px;
+}
+.vote-container{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: end;
+    margin-top: 5px;
+}
+.vote-container button{
+    padding: 6px;
+}
+.vote-container div{
+    font-size: 20px;
+    font-weight: 1000;
+    color: #9A3BFC;
+    background-color: #7AE300;
+    border-radius: 10px;
+    border: solid black 2px;
+    padding: 8px;
+}
