@@ -1,28 +1,38 @@
 import React, { useState } from 'react';
-import "./Menu.css"
+import "../styles/Menu.css"
+import VoteButton from './VoteButton';
 
 const Menu = ({...props}) => {
     const [count, setCount] = useState(0);
     let vote
     let unvote
     let score
-    const a = () =>{
-        props.update("abc")
-    }
-    
-    if (count == 10) {
-        vote = <button onClick={()=>{alert("test")}}>Click to vote</button>
-        unvote =<button onClick={()=>setCount(count-1)}>Click to Unvote</button>
+
+    if (count === 10) {
+        vote = () =>{
+            alert("Cannot Vote more")
+        }
+        unvote = ()=>{
+            setCount(count-1)
+        }
         score = "MAX"
     }
     else if(count<10 && count>0){
-        vote =<button onClick={()=>setCount(count+1)}>Click to Vote</button>
-        unvote =<button onClick={()=>setCount(count-1)}>Click to Unvote</button>
+        vote = () =>{
+            setCount(count+1)
+        }
+        unvote = ()=>{
+            setCount(count-1)
+        }
         score = count
     }
-    else if(count == 0){
-        vote =<button onClick={()=>setCount(count+1)}>Click to Vote</button>
-        unvote = <button onClick={()=>{alert("test")}}>Click to unvote</button>
+    else if(count === 0){
+        vote = () =>{
+            setCount(count+1)
+        }
+        unvote = ()=>{
+            alert("Cannot Unvote")
+        }
         score = "MIN"
     }
 
@@ -39,9 +49,9 @@ const Menu = ({...props}) => {
                 </div>
             </div>
             <div className="vote-container">
-                {vote}
-                <div className="test">{score}</div>
-                {unvote}
+                <VoteButton callback={vote} content="Click to Vote"/>
+                <div>{score}</div>
+                <VoteButton callback={unvote} content="Click to Unvote"/>
             </div>
         </div>
     )
